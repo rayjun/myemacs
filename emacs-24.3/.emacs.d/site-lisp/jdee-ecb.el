@@ -9,7 +9,7 @@
  '(jde-compiler (quote ("javac" "")))
  '(jde-complete-function (quote jde-complete-menu))
  '(jde-jdk (quote ("1.6")))
- '(jde-jdk-registry (quote (("1.6" . "C:/Java/jdk1.6.0_19"))))
+ '(jde-jdk-registry (quote (("1.6" . "C:/Program Files/Java/jdk1.7.0_07"))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t))
 
@@ -48,5 +48,5 @@
 (require 'jde)
 
 
-(global-set-key [\C-f12] 'ecb-activate)   ;;启用ecb
+(global-set-key [\C-f10] 'ecb-activate)   ;;启用ecb
 (global-set-key [\C-f11] 'ecb-deactivate)  ;;退出ecb

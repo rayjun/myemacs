@@ -1,0 +1,35 @@
+;; Object css/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "css/"
+  :tables (list 
+   (semanticdb-table "test2.html"
+    :major-mode 'html-mode
+    :tags 
+        '( ("body{
+       font-family:Verdana,sans-serif;
+   }
+   p{
+      font-family:Times,\"Times New Roman\",serif;
+    }" section nil nil [31 203])
+            ("这是一种字体" section (:members 
+              ( ("这是一种字体" section nil nil [215 272]))              ) nil [203 272]))          
+    :file "test2.html"
+    :pointmax 272
+    :fsize 308
+    :lastmodtime '(21314 37846 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "test.html"
+    :major-mode 'html-mode
+    :tags nil
+    :file "test.html"
+    :pointmax 308
+    :fsize 318
+    :lastmodtime '(21314 18219 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!rayjun!Desktop!normal!网页!css!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,94 @@
+;; Object c++/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "c++/"
+  :tables (list 
+   (semanticdb-table "link.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("iostream" include (:system-flag t) nil [1 19])
+            ("string" include (:system-flag t) nil [20 36])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [37 57])
+            ("OSTCBLENGTH" variable (:constant-flag t) nil [66 77])
+            ("TCB" type
+               (:typedef ("OSTCB" type (:type "struct") nil nil)
+                :superclasses "OSTCB"
+                :type "typedef")
+                nil [82 157])
+            ("OSTCB" type
+               (:members 
+                  ( ("data" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [106 118])
+                    ("prior" variable
+                       (:pointer 1
+                        :type ("OSTCB" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [122 135])
+                    ("next" variable
+                       (:pointer 1
+                        :type ("OSTCB" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [138 150]))                  
+                :type "struct")
+                nil [82 157])
+            ("createHead" function
+               (:pointer 1
+                :arguments 
+                  ( ("num" variable (:type "int") (reparse-symbol arg-sub-list) [175 183]))                  
+                :type ("TCB" type (:type "class") nil nil))
+                nil [159 541])
+            ("removeHead" function
+               (:pointer 1
+                :arguments 
+                  ( ("first" variable
+                       (:pointer 1
+                        :type ("TCB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [559 570]))                  
+                :type ("TCB" type (:type "class") nil nil))
+                nil [543 665])
+            ("insertHead" function
+               (:pointer 1
+                :arguments 
+                  ( ("head1" variable
+                       (:pointer 1
+                        :type ("TCB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [683 694])
+                    ("head2" variable
+                       (:pointer 1
+                        :type ("TCB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [694 705]))                  
+                :type ("TCB" type (:type "class") nil nil))
+                nil [667 787])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [798 807])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [808 821]))                  
+                :type "int")
+                nil [789 1195]))          
+    :file "link.cpp"
+    :pointmax 1196
+    :fsize 1327
+    :lastmodtime '(21305 19167 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("OSTCBLENGTH" . ((number "6" 78 . 79)))
+          )
+
+    )
+   (semanticdb-table "register.cpp"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "register.cpp"
+    :pointmax 785
+    :fsize 885
+    :lastmodtime '(21305 18957 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!rayjun!Desktop!normal!studysomthing!c++!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

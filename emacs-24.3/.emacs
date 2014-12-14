@@ -65,6 +65,8 @@ scroll-conservatively 10000)
 ;;yasnippet
 (add-to-list 'load-path "~/.emacs.d/elisp") 
 (require 'yasnippet-bundle) 
+(yas/global-mode 1)
+;;(global-set-key (kbd "C-;") 'yas/expand)
 
 
 ;;主题配置
@@ -81,85 +83,8 @@ scroll-conservatively 10000)
 
 
 
-;;(setq compile-command (concat "D:/Dev-Cpp/bin/g++ -g " "/"" buffer-file-name "/"")) (
-;;global-set-key (kbd "<f9>") 'smart-compile)( 
-;;defun smart-compile()
-  
-  ;;  "比较智能的C/C++编译命令
-  ;;如果当前目录有makefile则用make -k编译，否则，如果是
-  ;;处于c-mode，就用gcc -Wall编译，如果是c++-mode就用 g++ -Wall编译"
- ;; (interactive)
-  ;; 查找 Makefile
- ;; (let ((candidate-make-file-name '("makefile" "Makefile" "GNUmakefile"))
-;;	(command nil))
-  ;;  (if (not (null
-;;	      (find t candidate-make-file-name :key
-;;		    '(lambda (f) (file-readable-p f)))))
-;;	(setq command "make -k ")
-      ;; 没有找到 Makefile ，查看当前 mode 是否是已知的可编译的模式
-  ;;    (if (null (buffer-file-name (current-buffer)))
-;;	  (message "Buffer not attached to a file, won't compile!")
-;;	(if (eq major-mode 'c-mode)
-;;	    (setq command
-;;		  (concat "D:/mywork/DevC++/Dev-Cpp/MinGW64/bin/gcc.exe -Wall -o "      ;;你要明确知道自己的编译器在哪里,
-;;			  (file-name-sans-extension                          ;;这样,用你的gcc.exe的地址代替这里的D:/Dev-Cpp/bin/gcc.exe     
-;;			   (file-name-nondirectory buffer-file-name)) ;;注意,这里的路径的斜杠和vista的习惯相反,你要注意修改 
-;;			  " "
-;;			  (file-name-nondirectory buffer-file-name)
-;;			  " -g -lm "))
-;;	  (if (eq major-mode 'c++-mode)
-;;	      (setq command
-;;		    (concat "D:/mywork/DevC++/Dev-Cpp/MinGW64/bin/g++.exe -Wall -o " ;;还有这里的g++,也同gcc一样...
-;;			    (file-name-sans-extension
-;;			     (file-name-nondirectory buffer-file-name))
-			    " "
-;;			    (file-name-nondirectory buffer-file-name)
-;;			    " -g -lm "))
-;;	    (message "Unknow mode, won't compile!")))))
-  ;;  (if (not (null command))
-;;	(let ((command (read-from-minibuffer "Compile command: " command)))
-;;	  (compile command)))))
-      
-  (defun my-c-mode-hook()
-  ;; 将回车代替C-j的功能，换行的同时对齐
-  (define-key c-mode-map [return] 'newline-and-indent)
-  (interactive)
-  ;; 设置C程序的对齐风格
-  ;; (c-set-style "K&R")
-  ;; 自动模式，在此种模式下当你键入{时，会自动根据你设置的对齐风格对齐
-  ;; (c-toggle-auto-state)
-  ;; 此模式下，当按Backspace时会删除最多的空格
-  (c-toggle-hungry-state)
-  ;; TAB键的宽度设置为8
-  (setq c-basic-offset 4)
-  ;; 在菜单中加入当前Buffer的函数索引
-  (imenu-add-menubar-index)
-  ;; 在状态条上显示当前光标在哪个函数体内部
-  (which-function-mode)
-  )
-(defun my-c++-mode-hook()
-  (define-key c++-mode-map [return] 'newline-and-indent)
-  (interactive)
-  (c-set-style "stroustrup")
-  (c-toggle-auto-state)
-  (c-toggle-hungry-state)
-  (setq c-basic-offset 4)
-  (imenu-add-menubar-index)
-  (which-function-mode)
-  )
-(defun my-java-mode()
-  (define-key java-mode-map [return] 'newline-and-indent)
-  (interactive)
-  (c-set-style "java")
-  (c-toggle-auto-state)
-  (c-toggle-hungry-state)
-  (setq c-basic-offset 4)
-  (imenu-add-menubar-index)
-  (which-function-mode)
-  )
-(add-hook 'c-mode-hook 'my-c-mode-hook)
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
-(add-hook 'java-mode-hook 'my-java-mode)
+(load-file "~/.emacs.d/site-lisp/cc++.el")
+
 
 
 (custom-set-faces
@@ -220,3 +145,23 @@ scroll-conservatively 10000)
 
 ;;acutex的配置
 (load-file "~/.emacs.d/site-lisp/acutex.el")
+
+
+
+;;autocomplete
+(load-file "~/.emacs.d/site-lisp/auto-complete.elc")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("9fd20670758db15cc4d0b4442a74543888d2e445646b25f2755c65dcd6f1504b" default)))
+ '(ecb-key-map (quote ("C-c ." (t "fh" ecb-history-filter) (t "fs" ecb-sources-filter) (t "fm" ecb-methods-filter) (t "fr" ecb-methods-filter-regexp) (t "ft" ecb-methods-filter-tagclass) (t "fc" ecb-methods-filter-current-type) (t "fp" ecb-methods-filter-protection) (t "fn" ecb-methods-filter-nofilter) (t "fl" ecb-methods-filter-delete-last) (t "ff" ecb-methods-filter-function) (t "p" ecb-nav-goto-previous) (t "n" ecb-nav-goto-next) (t "lc" ecb-change-layout) (t "lr" ecb-redraw-layout) (t "lw" ecb-toggle-ecb-windows) (t "lt" ecb-toggle-layout) (t "s" ecb-window-sync) (t "r" ecb-rebuild-methods-buffer) (t "a" ecb-toggle-auto-expand-tag-tree) (t "x" ecb-expand-methods-nodes) (t "h" ecb-show-help) (t "gl" ecb-goto-window-edit-last) (nil "C-c 0" ecb-goto-window-edit1) (t "g2" ecb-goto-window-edit2) (t "gc" ecb-goto-window-compilation) (nil "C-c 1" ecb-goto-window-directories) (nil "C-c 2" ecb-goto-window-sources) (nil "C-c 3" ecb-goto-window-methods) (nil "C-c 4" ecb-goto-window-history) (t "ga" ecb-goto-window-analyse) (t "gb" ecb-goto-window-speedbar) (t "md" ecb-maximize-window-directories) (t "ms" ecb-maximize-window-sources) (t "mm" ecb-maximize-window-methods) (t "mh" ecb-maximize-window-history) (t "ma" ecb-maximize-window-analyse) (t "mb" ecb-maximize-window-speedbar) (t "e" eshell) (t "o" ecb-toggle-scroll-other-window-scrolls-compile) (t "\\" ecb-toggle-compile-window) (t "/" ecb-toggle-compile-window-height) (t "," ecb-cycle-maximized-ecb-buffers) (t "." ecb-cycle-through-compilation-buffers))))
+ '(ecb-options-version "2.40")
+ '(jde-compile-option-debug (quote ("all" (t t t))))
+ '(jde-compiler (quote ("javac" "")))
+ '(jde-complete-function (quote jde-complete-menu))
+ '(jde-jdk (quote ("1.6")))
+ '(jde-jdk-registry (quote (("1.6" . "C:/Program Files/Java/jdk1.7.0_07"))))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t))
